@@ -68,10 +68,6 @@
 						<div class="clearfix"></div>
 						<?php echo $content ?>
 					</div>
-
-					<div style=" margin-top: 10%; ">
-					<a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/images/pet.png') ?>" alt="..." class="img-home"></a>
-						<div class="clearfix"></div>
 				</div>
 				</div>
 
@@ -79,7 +75,7 @@
 				<!-- Footer Content -->
 				<footer>
 					<div class="pull-right">
-						<a href="https://http://rsh.fkh.ugm.ac.id/main/">Rumah Sakit Hewan Prof. Soeparwi</a> <?php echo $footer; ?>
+						<a href="https://www.instagram.com/deniep06" target="_blank">Apotek Asilmi. Development by. Deni @2021</a>
 					</div>
 			        <div class="clearfix"></div>
 				</footer>

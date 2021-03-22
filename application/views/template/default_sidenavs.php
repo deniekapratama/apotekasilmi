@@ -2,19 +2,11 @@
 	<div class="left_col scroll-view">
  		<div class="navbar nav_title" style="border: 0;">
  			<!-- logo info -->
- 			<div class="logo_pic">
- 				<a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/images/ugm.png') ?>" alt="Image" height="42" width="42"><span style="font-size: 18px;"><?php echo 'Rumah Sakit Hewan Prof. Soeparwi' ?></a>
- 			</div>
-			
-
 		<div class="profile">
-		<a href="<?php echo base_url(); ?>" class="site_title"><span style="font-size: 20px;"><?php echo 'Rumah Sakit Hewan Prof. Soeparwi' ?></span></a>
+			<a href="<?php echo base_url(); ?>" class="site_title"><span style="font-size: 24px; mt-10"><?php echo 'APOTEK ASILMI' ?></span></a>
 		</div>
-
 		
 		<div class="clearfix"></div>
-
-		
 		<!-- /menu profile quick info -->
 		<br>
 		<!-- Sidebar Menu -->
@@ -22,7 +14,6 @@
 			<div class="menu_section">
 				<h3></h3>
 				<ul class="nav side-menu">
-
 					<li><a href="<?php echo base_url('') ?>"><i class="fa fa-home"></i> Beranda </a></li>
 					<li><a><i class="fa fa-medkit"></i> Obat <span class="fa fa-chevron-down"></span></a>
 						<ul class="nav child_menu">

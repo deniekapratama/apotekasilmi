@@ -31,10 +31,10 @@
             <div class="col-sm-4 invoice-col">
               Dari
               <address>
-                              <strong>RSH Prof. Soeparwi</strong>
-                              <br>Jalan Yacaranda, Sekip Unit II
-                              <br>Yogyakarta 55281
-                              <br>Telp: 0274 564707
+                              <strong>Apotek Asilmi</strong>
+                              <br>Jl. MT. Haryono Kaum No.27A
+                              <br>Subang 41211
+                              <br>Telp: 0813-5482-2007
                              
                           </address>
             </div>
@@ -44,7 +44,7 @@
               <address>
                               <strong><?php echo $i->nama_pembeli ?></strong>
                               
-                              <br>Yogyakarta
+                              <br>Subang
                               
                           </address>
             </div>
