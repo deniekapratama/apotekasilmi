@@ -3,7 +3,7 @@
 <?php if ($nullstock > 0): ?>
                   <button id="melinda" style="display: none;" class="btn btn-default source" onclick="new PNotify({
                                   title: 'Peringatan',
-                                  text: 'Obat sudah habis...',
+                                  text: 'Obat sudah hampir habis...',
                                   type: 'error',
                                  
                                   styling: 'bootstrap3'
@@ -14,7 +14,7 @@
 <?php if ($nullex > 0): ?>
                   <button id="melinda" style="display: none;" class="btn btn-default source" onclick="new PNotify({
                                   title: 'Peringatan',
-                                  text: 'Obat sudah kedaluwarsa...',
+                                  text: 'Obat sudah hampir kedaluwarsa...',
                                   
                                  
                                   styling: 'bootstrap3'
@@ -34,7 +34,7 @@
               <div class="count"><?php echo $stockkat ?></div>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Pemasok</span>
+              <span class="count_top"><i class="fa fa-user"></i> Total Suppliers</span>
               <div class="count"><?php echo $sup ?></div>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
@@ -87,8 +87,8 @@
                     <div class="icon"><i class="fa fa-user green"></i>
                     </div>
                     <div class="count">...</div>
-                    <h3>Pemasok</h3>
-                    <p>Menambahkan pemasok baru</p>
+                    <h3>Suppliers</h3>
+                    <p>Menambahkan Suppliers baru</p>
                   </div>
                   </a>
                 </div>

@@ -38,7 +38,6 @@
 							<th>Tanggal Transaksi</th>
 							<th>No Referensi</th>
 							<th>Nama Pembeli</th>
-							
 							<th>Banyak</th>
 							<th>Total Penjualan</th>
 							<th>Aksi</th>
