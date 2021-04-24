@@ -46,10 +46,8 @@
               <th style="text-align: center">Unit obat</th>
               <th style="text-align: center">Harga satuan</th>
               <th style="text-align: center">Banyak</th>
-              
               <th style="text-align: center">Subtotal</th>
               <th style="text-align: center">Aksi</th>
-              
             </tr>
           </thead>
           
@@ -62,12 +60,12 @@
         </tr>
         </tfoot>
         </table>
-          
+
 
           <div class="ln_solid"></div>
           <div class="form-group">
             <div class="col-md-6 col-md-offset-3">
-              <a href="<?php echo base_url('example/table_invoice') ?>"><button type="button" class="btn btn-danger">Batal</button></a>
+              <a href="<?php echo base_url('example/form_invoice') ?>"><button type="button" class="btn btn-danger">Batal</button></a>
               <button id='addRow' class="btn btn-info" type="button"><span class="fa fa-plus"></span> Tambah Produk</button>
               <button id="send" type="submit" class="btn btn-success">Simpan</button>
               
@@ -76,11 +74,6 @@
         </form>
       </div>
     </div>
-
-    
-
-      
-
   </div>
 </div>
 

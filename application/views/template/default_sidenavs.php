@@ -34,10 +34,10 @@
 						</ul>
 					</li>
 
-					<li><a><i class="fa fa-users"></i> Pemasok <span class="fa fa-chevron-down"></span></a>
+					<li><a><i class="fa fa-users"></i> Supplier <span class="fa fa-chevron-down"></span></a>
 						<ul class="nav child_menu">
-							<li><a href="<?php echo base_url('example/form_sup') ?>">Tambah Pemasok</a></li>
-                    		<li><a href="<?php echo base_url('example/table_sup') ?>">Lihat Pemasok</a></li>
+							<li><a href="<?php echo base_url('example/form_sup') ?>">Tambah Supplier</a></li>
+                    		<li><a href="<?php echo base_url('example/table_sup') ?>">Lihat Supplier</a></li>
 						</ul>
 					</li>
 

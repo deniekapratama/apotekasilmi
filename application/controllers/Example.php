@@ -39,8 +39,6 @@ class Example extends CI_Controller
 		$this->template->render();
 	}
 
-	
-
 	function dashboard() {
 		$this->template->write('title', 'Dashboard', TRUE);
 		$this->template->write('header', 'Dashboard');
@@ -48,8 +46,6 @@ class Example extends CI_Controller
 
 		$this->template->render();
 	}
-
-	
 
 	function table_exp() {
 		$data['table_exp'] = $this->apotek_data->expired()->result();
@@ -173,8 +169,6 @@ class Example extends CI_Controller
 		$this->template->render();
 	}
 
-	
-
 	function form_sup() {
 		$this->template->write('title', 'Tambah Pemasok', TRUE);
 		$this->template->write('header', 'Sistem Informasi Apotek Asilmi Asilmi Asilmi');
@@ -182,9 +176,6 @@ class Example extends CI_Controller
 
 		$this->template->render();
 	}
-
-
-	
 
 	function form_invoice() {
 		$data['table_med'] = $this->apotek_data->medicine()->result();
@@ -230,7 +221,6 @@ class Example extends CI_Controller
 
 
 	
-
 	function form_customer() {
 		$this->template->write('title', 'Tambah Pelanggan', TRUE);
 		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
