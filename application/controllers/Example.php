@@ -163,7 +163,7 @@ class Example extends CI_Controller
 		$data['table_sup'] = $this->apotek_data->supplier()->result();
 		
 		$this->template->write('title', 'Lihat Pemasok', TRUE);
-		$this->template->write('header', 'Sistem Informasi Apotek Asilmi Asilmi Asilmi');
+		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
 		$this->template->write_view('content', 'tes/table_sup', $data, true);
 
 		$this->template->render();

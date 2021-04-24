@@ -34,8 +34,8 @@
               <th>Stok</th>
               <th>Kedaluwarsa</th>
               <th>Harga Jual</th>
-              <th>Unit</th>
-              <th>Pemasok</th>
+              <th>Jenis</th>
+              <th>Suppliers</th>
               
             </tr>
           </thead>
@@ -102,8 +102,8 @@
               <th>Stok</th>
               <th>Kedaluwarsa</th>
               <th>Harga Jual</th>
-              <th>Unit</th>
-              <th>Pemasok</th>
+              <th>Jenis</th>
+              <th>Suppliers</th>
               
             </tr>
           </thead>

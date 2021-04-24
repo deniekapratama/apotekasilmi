@@ -2,7 +2,7 @@
 	<div class="col-md-12 col-sm-12 col-xs-12">
 		<div class="x_panel">
 			<div class="x_title">
-				<h2>Lihat Pemasok</h2>
+				<h2>Lihat Suppliers</h2>
 				<ul class="nav navbar-right panel_toolbox">
 					<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 					</li>
@@ -25,13 +25,13 @@
                  	
 				<?php endif; ?>
 
-				<a href="<?php echo base_url('example/form_sup') ?>"><button type="button" class="btn btn-success" style="margin-bottom: 13px"><span class="fa fa-plus"></span> Tambah Pemasok </button></a>
+				<a href="<?php echo base_url('example/form_sup') ?>"><button type="button" class="btn btn-success" style="margin-bottom: 13px"><span class="fa fa-plus"></span> Tambah Suppliers </button></a>
 				
 				<table id="datatable-buttons" class="table table-striped table-bordered">
 					<thead>
 						<tr>
 							<th>No</th>
-							<th>Nama Pemasok</th>
+							<th>Nama Suppliers</th>
 							<th>Alamat</th>
 							<th>No Telepon</th>
 							<th>Aksi</th>

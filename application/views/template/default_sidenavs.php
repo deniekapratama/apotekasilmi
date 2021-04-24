@@ -1,12 +1,26 @@
 <div class="col-md-3 left_col menu_fixed">
 	<div class="left_col scroll-view">
- 		<div class="navbar nav_title" style="border: 0;">
- 			<!-- logo info -->
+ 		<div class="navbar nav_title" style="border: 20;">
+		 
+		 <!-- logo info -->
 		<div class="profile">
-			<a href="<?php echo base_url(); ?>" class="site_title"><span style="font-size: 24px; mt-10"><?php echo 'APOTEK ASILMI' ?></span></a>
+			<a href="<?php echo base_url(); ?>" class="site_title"><span style="font-size: 24px; mt-20"><?php echo 'APOTEK ASILMI' ?></span></a>
 		</div>
 		
 		<div class="clearfix"></div>
+
+		<!-- menu profile quick info -->
+		<div class="profile clearfix">
+              <div class="profile_pic">
+                <img src="<?= base_url(''); ?>assets/images/avatar.png" alt="..." class="img-circle profile_img">
+              </div>
+              <div class="profile_info">
+                <span>Welcome,</span>
+                <h2>Admin</h2>
+              </div>
+            </div>
+            <!-- /menu profile quick info -->
+
 		<!-- /menu profile quick info -->
 		<br>
 		<!-- Sidebar Menu -->

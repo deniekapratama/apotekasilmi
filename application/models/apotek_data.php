@@ -634,22 +634,4 @@ class Apotek_data extends CI_Model
             }
             return $hasil;
     }
-
-
-
-
-
-
-
-    
-
-
-
 }
-
-
-
-
-
-
-

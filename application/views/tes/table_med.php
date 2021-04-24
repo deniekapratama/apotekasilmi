@@ -39,7 +39,7 @@
 							<th>Stok</th>
 							<th>Kedaluwarsa</th>
 							<th>Harga Jual</th>
-							<th>Unit</th>
+							<th>Jenis</th>
 							<th>Aksi</th>
 						</tr>
 					</thead>
