@@ -37,7 +37,7 @@
 						<tr>
 							<th>Tanggal Transaksi</th>
 							<th>No Referensi</th>
-							<th>Nama Pemasok</th>
+							<th>Nama Suppliers</th>
 							
 							<th>Banyak</th>
 							<th>Total Pembelian</th>

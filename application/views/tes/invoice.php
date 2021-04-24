@@ -42,10 +42,7 @@
             <div class="col-sm-4 invoice-col">
               Ke
               <address>
-                              <strong><?php echo $i->nama_pembeli ?></strong>
-                              
-                              <br>Subang
-                              
+                              <strong><?php echo $i->nama_pembeli ?></strong>                             
                           </address>
             </div>
             <!-- /.col -->

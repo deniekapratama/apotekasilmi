@@ -20,7 +20,7 @@
           <div class="row">
             <div class="col-xs-12 invoice-header">
               <h1>
-                              <i class="fa fa-globe"></i> Invoice.
+                              <i class="fa fa-file-pdf-o"></i> Invoice.
                               <small class="pull-right"></small>
                           </h1>
             </div>
@@ -31,10 +31,10 @@
             <div class="col-sm-4 invoice-col">
               Ke
               <address>
-                              <strong>RSH Prof. Soeparwi</strong>
-                              <br>Jalan Yacaranda, Sekip Unit II
-                              <br>Yogyakarta 55281
-                              <br>Telp: 0274 564707
+                              <strong>Apotek Asilmi</strong>
+                              <br>Jl. MT. Haryono Kaum No.27A
+                              <br>Subang 41211
+                              <br>Telp: 0813-5482-2007
                              
                           </address>
             </div>
@@ -43,9 +43,7 @@
               Dari
               <address>
                               <strong><?php echo $p->nama_pemasok ?></strong>
-                              
-                              <br>Yogyakarta
-                              
+                                                          
                           </address>
             </div>
             <!-- /.col -->
@@ -71,7 +69,7 @@
                   <tr>
                     
                     <th>Nama Obat</th>
-                    <th>Harga pemasok</th>
+                    <th>Harga Suppliers</th>
                     <th>Banyak</th>
                     <th>Subtotal</th>
                   </tr>
@@ -107,10 +105,7 @@
 
           <div class="row">
             <!-- accepted payments column -->
-            <div class="col-xs-6">
-              
-              
-              
+            <div class="col-xs-6">                        
             </div>
             <!-- /.col -->
             
@@ -120,7 +115,7 @@
 
           <!-- this row will not appear when printing -->
           <div class="row no-print">
-            <div class="col-xs-12">
+            <div class="col-xs-10">
               <button class="btn btn-default" onclick="window.print();"><i class="fa fa-print"></i> Cetak</button>
               
             </div>
