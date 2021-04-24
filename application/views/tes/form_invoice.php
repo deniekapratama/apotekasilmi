@@ -22,7 +22,7 @@
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nama_pembeli">Nama Pembeli</label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="nama_pembeli" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="1" name="nama_pembeli" required="required" type="text">
+              <input id="nama_pembeli" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="1" name="nama_pembeli" type="text">
             </div>
           </div>
 
@@ -30,7 +30,7 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="tgl_beli">Tanggal Transaksi</label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <div class='input-group date' id='myDatepicker2'>
-                  <input type="text" name="tgl_beli" id="tgl_beli" class="form-control" required="required">
+                  <input type="text" name="tgl_beli" id="tgl_beli" value="<?php echo date("d-m-Y"); ?>" class="form-control" required="required">
                   <span class="input-group-addon">
                      <span class="glyphicon glyphicon-calendar"></span>
                   </span>
