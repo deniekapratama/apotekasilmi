@@ -34,7 +34,7 @@ class Example extends CI_Controller
 
 		$this->template->write('title', 'Beranda', TRUE);
 		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
-		$this->template->write_view('content', 'tes/mypage', $data, true);
+		$this->template->write_view('content', 'admin/mypage', $data, true);
 
 		$this->template->render();
 	}
@@ -42,7 +42,7 @@ class Example extends CI_Controller
 	function dashboard() {
 		$this->template->write('title', 'Dashboard', TRUE);
 		$this->template->write('header', 'Dashboard');
-		$this->template->write_view('content', 'tes/dashboard', '', true);
+		$this->template->write_view('content', 'admin/dashboard', '', true);
 
 		$this->template->render();
 	}
@@ -52,7 +52,7 @@ class Example extends CI_Controller
 		$data['table_alex'] = $this->apotek_data->almostex()->result();
 		$this->template->write('title', 'Obat kedaluwarsa', TRUE);
 		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
-		$this->template->write_view('content', 'tes/table_exp', $data, true);
+		$this->template->write_view('content', 'admin/table_exp', $data, true);
 
 		$this->template->render();
 
@@ -63,7 +63,7 @@ class Example extends CI_Controller
 		$data['table_alstock'] = $this->apotek_data->almostout()->result();
 		$this->template->write('title', 'Obat Habis', TRUE);
 		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
-		$this->template->write_view('content', 'tes/table_stock', $data,  true);
+		$this->template->write_view('content', 'admin/table_stock', $data,  true);
 
 		$this->template->render();
 	}
@@ -71,7 +71,7 @@ class Example extends CI_Controller
 	function form_cat() {
 		$this->template->write('title', 'Tambah Kategori', TRUE);
 		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
-		$this->template->write_view('content', 'tes/form_cat', '', true);
+		$this->template->write_view('content', 'admin/form_cat', '', true);
 
 		$this->template->render();
 	}
@@ -79,7 +79,7 @@ class Example extends CI_Controller
 	function form_unit() {
 		$this->template->write('title', 'Tambah Unit', TRUE);
 		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
-		$this->template->write_view('content', 'tes/form_unit', '', true);
+		$this->template->write_view('content', 'admin/form_unit', '', true);
 
 		$this->template->render();
 	}
@@ -90,7 +90,7 @@ class Example extends CI_Controller
 		$data['get_unit'] = $this->apotek_data->get_unit();
 		$this->template->write('title', 'Tambah Obat', TRUE);
 		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
-		$this->template->write_view('content', 'tes/form_med', $data, true);
+		$this->template->write_view('content', 'admin/form_med', $data, true);
 
 		$this->template->render();
 	}
@@ -101,7 +101,7 @@ class Example extends CI_Controller
 		$data['table_med'] = $this->apotek_data->medicine()->result();
 		$this->template->write('title', 'Lihat Obat', TRUE);
 		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
-		$this->template->write_view('content', 'tes/table_med', $data, true);
+		$this->template->write_view('content', 'admin/table_med', $data, true);
 
 		$this->template->render();
 	}
@@ -111,7 +111,7 @@ class Example extends CI_Controller
 		$data['table_unit'] = $this->apotek_data->unit()->result();
 		$this->template->write('title', 'Lihat Unit', TRUE);
 		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
-		$this->template->write_view('content', 'tes/table_unit', $data, true);
+		$this->template->write_view('content', 'admin/table_unit', $data, true);
 
 		$this->template->render();
 		
@@ -121,7 +121,7 @@ class Example extends CI_Controller
 	function invoice_report() {		
 		$this->template->write('title', 'Grafik Penjualan', TRUE);
 		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
-		$this->template->write_view('content', 'tes/invoice_report', true);
+		$this->template->write_view('content', 'admin/invoice_report', true);
 
 		$this->template->render();
 		
@@ -131,7 +131,7 @@ class Example extends CI_Controller
 
 		$this->template->write('title', 'Grafik Pembelian', TRUE);
 		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
-		$this->template->write_view('content', 'tes/purchase_report', true);
+		$this->template->write_view('content', 'admin/purchase_report', true);
 
 		$this->template->render();
 		
@@ -143,7 +143,7 @@ class Example extends CI_Controller
 		$data['report'] = $this->apotek_data->get_report();
 		$this->template->write('title', 'Laporan', TRUE);
 		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
-		$this->template->write_view('content', 'tes/report', $data, true);
+		$this->template->write_view('content', 'admin/report', $data, true);
 
 		$this->template->render();
 		
@@ -154,7 +154,7 @@ class Example extends CI_Controller
 		$data['table_cat'] = $this->apotek_data->category()->result();
 		$this->template->write('title', 'Lihat Kategori', TRUE);
 		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
-		$this->template->write_view('content', 'tes/table_cat', $data, true);
+		$this->template->write_view('content', 'admin/table_cat', $data, true);
 
 		$this->template->render();
 	}
@@ -164,7 +164,7 @@ class Example extends CI_Controller
 		
 		$this->template->write('title', 'Lihat Pemasok', TRUE);
 		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
-		$this->template->write_view('content', 'tes/table_sup', $data, true);
+		$this->template->write_view('content', 'admin/table_sup', $data, true);
 
 		$this->template->render();
 	}
@@ -172,7 +172,7 @@ class Example extends CI_Controller
 	function form_sup() {
 		$this->template->write('title', 'Tambah Pemasok', TRUE);
 		$this->template->write('header', 'Sistem Informasi Apotek Asilmi Asilmi Asilmi');
-		$this->template->write_view('content', 'tes/form_sup', '', true);
+		$this->template->write_view('content', 'admin/form_sup', '', true);
 
 		$this->template->render();
 	}
@@ -184,7 +184,7 @@ class Example extends CI_Controller
 		$data['get_unit'] = $this->apotek_data->get_unit();
 		$this->template->write('title', 'Tambah Penjualan', TRUE);
 		$this->template->write('header', 'Sistem Informasi Apotek Asilmi Asilmi Asilmi');
-		$this->template->write_view('content', 'tes/form_invoice', $data, true);
+		$this->template->write_view('content', 'admin/form_invoice', $data, true);
 
 		$this->template->render();
 	}
@@ -198,7 +198,7 @@ class Example extends CI_Controller
 		
 		$this->template->write('title', 'Tambah Pembelian', TRUE);
 		$this->template->write('header', 'Sistem Informasi Apotek Asilmi Asilmi Asilmi');
-		$this->template->write_view('content', 'tes/form_purchase', $data, true);
+		$this->template->write_view('content', 'admin/form_purchase', $data, true);
 
 		$this->template->render();
 	}
@@ -208,7 +208,7 @@ class Example extends CI_Controller
 		
 		$this->template->write('title', 'Lihat Pembelian', TRUE);
 		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
-		$this->template->write_view('content', 'tes/table_purchase', $data, true);
+		$this->template->write_view('content', 'admin/table_purchase', $data, true);
 
 		$this->template->render();
 	}
@@ -224,7 +224,7 @@ class Example extends CI_Controller
 	function form_customer() {
 		$this->template->write('title', 'Tambah Pelanggan', TRUE);
 		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
-		$this->template->write_view('content', 'tes/form_customer', '', true);
+		$this->template->write_view('content', 'admin/form_customer', '', true);
 
 		$this->template->render();
 	}
@@ -234,7 +234,7 @@ class Example extends CI_Controller
 	function table_customer() {
 		$this->template->write('title', 'Lihat Pelanggan', TRUE);
 		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
-		$this->template->write_view('content', 'tes/table_customer', '', true);
+		$this->template->write_view('content', 'admin/table_customer', '', true);
 
 		$this->template->render();
 	}
@@ -243,7 +243,7 @@ class Example extends CI_Controller
 		$data['table_invoice'] = $this->apotek_data->invoice()->result();
 		$this->template->write('title', 'Lihat Penjualan', TRUE);
 		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
-		$this->template->write_view('content', 'tes/table_invoice', $data, true);
+		$this->template->write_view('content', 'admin/table_invoice', $data, true);
 
 		$this->template->render();
 	}
@@ -414,7 +414,7 @@ class Example extends CI_Controller
 		$data['show_invoice'] = $this->apotek_data->show_invoice($where, 'table_invoice')->result();
 		$this->template->write('title', 'Invoice Penjualan', TRUE);
 		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
-		$this->template->write_view('content', 'tes/invoice', $data, true);
+		$this->template->write_view('content', 'admin/invoice', $data, true);
 
 		$this->template->render();
 	}
@@ -426,7 +426,7 @@ class Example extends CI_Controller
 		$data['show_invoice'] = $this->apotek_data->show_invoice($where, 'table_purchase')->result();
 		$this->template->write('title', 'Invoice Pembelian', TRUE);
 		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
-		$this->template->write_view('content', 'tes/purchase', $data, true);
+		$this->template->write_view('content', 'admin/purchase', $data, true);
 
 		$this->template->render();
 	}
@@ -437,7 +437,7 @@ class Example extends CI_Controller
 		$data['table_cat'] = $this->apotek_data->edit_data($where,'table_cat')->result();
 		$this->template->write('title', 'Ubah Kategori', TRUE);
 		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
-		$this->template->write_view('content', 'tes/edit_form_cat', $data, true);
+		$this->template->write_view('content', 'admin/edit_form_cat', $data, true);
 
 		$this->template->render();
 	}
@@ -470,7 +470,7 @@ class Example extends CI_Controller
 		$data['table_med'] = $this->apotek_data->edit_data($where,'table_med')->result();
 		$this->template->write('title', 'Ubah Obat', TRUE);
 		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
-		$this->template->write_view('content', 'tes/edit_form_med', $data, true);
+		$this->template->write_view('content', 'admin/edit_form_med', $data, true);
 
 		$this->template->render();
 	}
@@ -516,7 +516,7 @@ class Example extends CI_Controller
 		$data['table_sup'] = $this->apotek_data->edit_data($where,'table_sup')->result();
 		$this->template->write('title', 'Ubah Pemasok', TRUE);
 		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
-		$this->template->write_view('content', 'tes/edit_form_sup', $data, true);
+		$this->template->write_view('content', 'admin/edit_form_sup', $data, true);
 
 		$this->template->render();
 	}
@@ -526,7 +526,7 @@ class Example extends CI_Controller
 		$data['table_unit'] = $this->apotek_data->edit_data($where,'table_unit')->result();
 		$this->template->write('title', 'Ubah Unit', TRUE);
 		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
-		$this->template->write_view('content', 'tes/edit_form_unit', $data, true);
+		$this->template->write_view('content', 'admin/edit_form_unit', $data, true);
 
 		$this->template->render();
 	}
