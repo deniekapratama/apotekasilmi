@@ -3,13 +3,14 @@ require_once 'functions.php';
 /**
 * This is Example Controller
 */
-class Example extends CI_Controller
+class Admin extends CI_Controller
 {
 	
 	
 	function __construct()
 	{
 		parent::__construct();
+		is_logged_in();
 		$this->load->model('apotek_data');
         $this->load->database();
         $this->load->helper(array('form', 'url'));

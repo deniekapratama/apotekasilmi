@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Waktu pembuatan: 24 Apr 2021 pada 18.50
--- Versi server: 10.4.17-MariaDB
--- Versi PHP: 7.3.27
+-- Host: 127.0.0.1
+-- Generation Time: May 19, 2021 at 09:33 AM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 7.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `month`
+-- Table structure for table `month`
 --
 
 CREATE TABLE `month` (
@@ -33,7 +33,7 @@ CREATE TABLE `month` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `month`
+-- Dumping data for table `month`
 --
 
 INSERT INTO `month` (`month_num`, `month_name`) VALUES
@@ -53,7 +53,7 @@ INSERT INTO `month` (`month_num`, `month_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `table_cat`
+-- Table structure for table `table_cat`
 --
 
 CREATE TABLE `table_cat` (
@@ -63,7 +63,7 @@ CREATE TABLE `table_cat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `table_cat`
+-- Dumping data for table `table_cat`
 --
 
 INSERT INTO `table_cat` (`id_kat`, `nama_kategori`, `des_kat`) VALUES
@@ -78,7 +78,7 @@ INSERT INTO `table_cat` (`id_kat`, `nama_kategori`, `des_kat`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `table_invoice`
+-- Table structure for table `table_invoice`
 --
 
 CREATE TABLE `table_invoice` (
@@ -94,7 +94,7 @@ CREATE TABLE `table_invoice` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `table_invoice`
+-- Dumping data for table `table_invoice`
 --
 
 INSERT INTO `table_invoice` (`id_tagihan`, `ref`, `nama_obat`, `harga_jual`, `banyak`, `subtotal`, `nama_pembeli`, `tgl_beli`, `grandtotal`) VALUES
@@ -103,7 +103,7 @@ INSERT INTO `table_invoice` (`id_tagihan`, `ref`, `nama_obat`, `harga_jual`, `ba
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `table_med`
+-- Table structure for table `table_med`
 --
 
 CREATE TABLE `table_med` (
@@ -122,7 +122,7 @@ CREATE TABLE `table_med` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `table_med`
+-- Dumping data for table `table_med`
 --
 
 INSERT INTO `table_med` (`id_obat`, `nama_obat`, `penyimpanan`, `stok`, `unit`, `nama_kategori`, `kedaluwarsa`, `des_obat`, `harga_beli`, `harga_jual`, `nama_pemasok`, `gambar`) VALUES
@@ -133,7 +133,7 @@ INSERT INTO `table_med` (`id_obat`, `nama_obat`, `penyimpanan`, `stok`, `unit`, 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `table_purchase`
+-- Table structure for table `table_purchase`
 --
 
 CREATE TABLE `table_purchase` (
@@ -149,7 +149,7 @@ CREATE TABLE `table_purchase` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `table_purchase`
+-- Dumping data for table `table_purchase`
 --
 
 INSERT INTO `table_purchase` (`id_pembelian`, `ref`, `nama_obat`, `harga_beli`, `banyak`, `subtotal`, `nama_pemasok`, `tgl_beli`, `grandtotal`) VALUES
@@ -160,7 +160,7 @@ INSERT INTO `table_purchase` (`id_pembelian`, `ref`, `nama_obat`, `harga_beli`, 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `table_sup`
+-- Table structure for table `table_sup`
 --
 
 CREATE TABLE `table_sup` (
@@ -171,7 +171,7 @@ CREATE TABLE `table_sup` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `table_sup`
+-- Dumping data for table `table_sup`
 --
 
 INSERT INTO `table_sup` (`id_pem`, `nama_pemasok`, `alamat`, `telepon`) VALUES
@@ -184,7 +184,7 @@ INSERT INTO `table_sup` (`id_pem`, `nama_pemasok`, `alamat`, `telepon`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `table_unit`
+-- Table structure for table `table_unit`
 --
 
 CREATE TABLE `table_unit` (
@@ -193,7 +193,7 @@ CREATE TABLE `table_unit` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `table_unit`
+-- Dumping data for table `table_unit`
 --
 
 INSERT INTO `table_unit` (`id_unit`, `unit`) VALUES
@@ -202,31 +202,145 @@ INSERT INTO `table_unit` (`id_unit`, `unit`) VALUES
 (3, 'Sirup'),
 (4, 'Tablet');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `name` varchar(128) NOT NULL,
+  `email` varchar(128) NOT NULL,
+  `image` varchar(128) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `role_id` int(11) NOT NULL,
+  `is_active` int(11) NOT NULL,
+  `date_created` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `role_id`, `is_active`, `date_created`) VALUES
+(1, 'deni', 'deni@gmail.com', 'default.jpg', '$2y$10$11w.3wLAwLbngz/uX8ygvu71naTVYKENLRpwHWq6ZKqW5DN13hv/e', 1, 1, 1621389773),
+(2, 'eka', 'eka@gmail.com', 'default.jpg', '$2y$10$fXxs74QRXTJA7JVpgLBUbueJmcPY1dYEqHvmS692y4flr.5QiBoEa', 2, 1, 1621390141);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_access_menu`
+--
+
+CREATE TABLE `user_access_menu` (
+  `id` int(11) NOT NULL,
+  `role_id` int(11) NOT NULL,
+  `menu_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_access_menu`
+--
+
+INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
+(1, 1, 1),
+(2, 1, 2),
+(3, 2, 2),
+(4, 1, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_menu`
+--
+
+CREATE TABLE `user_menu` (
+  `id` int(11) NOT NULL,
+  `menu` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_menu`
+--
+
+INSERT INTO `user_menu` (`id`, `menu`) VALUES
+(1, 'Admin'),
+(2, 'User'),
+(3, 'Menu');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_role`
+--
+
+CREATE TABLE `user_role` (
+  `id` int(11) NOT NULL,
+  `role` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_role`
+--
+
+INSERT INTO `user_role` (`id`, `role`) VALUES
+(1, 'Administrator'),
+(2, 'Member');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_sub_menu`
+--
+
+CREATE TABLE `user_sub_menu` (
+  `id` int(11) NOT NULL,
+  `menu_id` int(11) NOT NULL,
+  `title` varchar(128) NOT NULL,
+  `url` varchar(128) NOT NULL,
+  `icon` varchar(128) NOT NULL,
+  `is_active` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_sub_menu`
+--
+
+INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active`) VALUES
+(1, 1, 'Dashboard', 'admin', 'fas fa-fw fa-tachometer-alt', 1),
+(2, 2, 'My Profile', 'user', 'fas fa-fw fa-user', 1),
+(3, 2, 'Edit User', 'user/edit', '', 1),
+(4, 3, 'Menu Management', 'menu', '', 1),
+(5, 3, 'SubMenu Management', 'menu/submenu', '', 1),
+(6, 1, 'Role', 'admin/role', '', 1),
+(7, 2, 'Change Password', 'user/changepassword', '', 1);
+
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `month`
+-- Indexes for table `month`
 --
 ALTER TABLE `month`
   ADD PRIMARY KEY (`month_num`);
 
 --
--- Indeks untuk tabel `table_cat`
+-- Indexes for table `table_cat`
 --
 ALTER TABLE `table_cat`
   ADD PRIMARY KEY (`id_kat`),
   ADD UNIQUE KEY `kategori` (`nama_kategori`);
 
 --
--- Indeks untuk tabel `table_invoice`
+-- Indexes for table `table_invoice`
 --
 ALTER TABLE `table_invoice`
   ADD PRIMARY KEY (`id_tagihan`);
 
 --
--- Indeks untuk tabel `table_med`
+-- Indexes for table `table_med`
 --
 ALTER TABLE `table_med`
   ADD PRIMARY KEY (`id_obat`),
@@ -236,71 +350,101 @@ ALTER TABLE `table_med`
   ADD KEY `med_sup` (`nama_pemasok`);
 
 --
--- Indeks untuk tabel `table_purchase`
+-- Indexes for table `table_purchase`
 --
 ALTER TABLE `table_purchase`
   ADD PRIMARY KEY (`id_pembelian`);
 
 --
--- Indeks untuk tabel `table_sup`
+-- Indexes for table `table_sup`
 --
 ALTER TABLE `table_sup`
   ADD PRIMARY KEY (`id_pem`),
   ADD UNIQUE KEY `nama_supplier` (`nama_pemasok`);
 
 --
--- Indeks untuk tabel `table_unit`
+-- Indexes for table `table_unit`
 --
 ALTER TABLE `table_unit`
   ADD PRIMARY KEY (`id_unit`),
   ADD UNIQUE KEY `unit` (`unit`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_access_menu`
+--
+ALTER TABLE `user_access_menu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_menu`
+--
+ALTER TABLE `user_menu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_role`
+--
+ALTER TABLE `user_role`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_sub_menu`
+--
+ALTER TABLE `user_sub_menu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `table_cat`
+-- AUTO_INCREMENT for table `table_cat`
 --
 ALTER TABLE `table_cat`
-  MODIFY `id_kat` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=223;
+  MODIFY `id_kat` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=224;
 
 --
--- AUTO_INCREMENT untuk tabel `table_invoice`
+-- AUTO_INCREMENT for table `table_invoice`
 --
 ALTER TABLE `table_invoice`
   MODIFY `id_tagihan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
 
 --
--- AUTO_INCREMENT untuk tabel `table_med`
+-- AUTO_INCREMENT for table `table_med`
 --
 ALTER TABLE `table_med`
   MODIFY `id_obat` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1039;
 
 --
--- AUTO_INCREMENT untuk tabel `table_purchase`
+-- AUTO_INCREMENT for table `table_purchase`
 --
 ALTER TABLE `table_purchase`
   MODIFY `id_pembelian` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- AUTO_INCREMENT untuk tabel `table_sup`
+-- AUTO_INCREMENT for table `table_sup`
 --
 ALTER TABLE `table_sup`
   MODIFY `id_pem` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
--- AUTO_INCREMENT untuk tabel `table_unit`
+-- AUTO_INCREMENT for table `table_unit`
 --
 ALTER TABLE `table_unit`
   MODIFY `id_unit` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `table_med`
+-- Constraints for table `table_med`
 --
 ALTER TABLE `table_med`
   ADD CONSTRAINT `med_cat` FOREIGN KEY (`nama_kategori`) REFERENCES `table_cat` (`nama_kategori`) ON UPDATE CASCADE,
