@@ -13,7 +13,10 @@ class Admin extends CI_Controller
 		is_logged_in();
 		$this->load->model('apotek_data');
         $this->load->database();
-        $this->load->helper(array('form', 'url'));
+		$this->load->helper(array('form', 'url'));
+		
+		//tambahan		memanggil nama user
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
        
         $data['nullstock'] = $this->apotek_data->countstock();
         $data['nullex'] = $this->apotek_data->countex();

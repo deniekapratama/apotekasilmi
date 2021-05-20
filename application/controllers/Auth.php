@@ -18,6 +18,10 @@ class Auth extends CI_Controller
             //$this->load->view('templates/auth_header', $data);
             $this->load->view('auth/login');
             //$this->load->view('templates/auth_footer');
+
+            $this->template->write('title', 'Beranda', TRUE);
+            $this->template->write('header', 'Sistem Informasi Apotek Asilmi');
+            $this->template->write_view('content', 'auth/login', $data, true);
         } else {
 
             //validasi Sukses

@@ -1,70 +1,383 @@
-<?php
-defined('BASEPATH') or exit('No direct script access allowed');
-
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
+require_once 'functions.php';
+/**
+* This is Example Controller
+*/
 class User extends CI_Controller
 {
-
-	public function __construct()
+	
+	
+	function __construct()
 	{
 		parent::__construct();
 		is_logged_in();
-	}
-
-	public function index()
-	{
-		$data['title'] = 'My Profile';
+		$this->load->model('apotek_data');
+        $this->load->database();
+		$this->load->helper(array('form', 'url'));
+		
+		//tambahan		memanggil nama user
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-
-		//$this->load->view('templates/header', $data);
-		//$this->load->view('templates/sidebar', $data);
-		//$this->load->view('templates/topbar', $data);
-		$this->load->view('user/index', $data);
-		//$this->load->view('templates/footer');
-
-
-		$this->template->write_view('sidenavs', 'template/default_sidenavs', true);
+       
+        $data['nullstock'] = $this->apotek_data->countstock();
+        $data['nullex'] = $this->apotek_data->countex();
+        $this->template->write_view('sidenavs', 'template/default_sidebar_user', true);
 		$this->template->write_view('navs', 'template/default_topnavs.php', $data, true);
 	}
 
+	
 
-	public function changePassword()
-	{
-		$data['title'] = 'Change Password';
-		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+	function index() {
+		$data['stockobat'] = $this->apotek_data->count_med();
+		$data['stockkat'] = $this->apotek_data->count_cat();
+		$data['sup'] = $this->apotek_data->count_sup();
+		$data['unit'] = $this->apotek_data->count_unit();
+		$data['inv'] = $this->apotek_data->count_inv();
+		$data['pur'] = $this->apotek_data->count_pur();
+		$data['totpur'] = $this->apotek_data->count_totpur();
+		$data['totinv'] = $this->apotek_data->count_totinv();
+
+		$this->template->write('title', 'Beranda', TRUE);
+		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
+		$this->template->write_view('content', 'admin/mypage', $data, true);
+
+		$this->template->render();
+	}
+
+	function dashboard() {
+		$this->template->write('title', 'Dashboard', TRUE);
+		$this->template->write('header', 'Dashboard');
+		$this->template->write_view('content', 'admin/dashboard', '', true);
+
+		$this->template->render();
+	}
+
+	function table_exp() {
+		$data['table_exp'] = $this->apotek_data->expired()->result();
+		$data['table_alex'] = $this->apotek_data->almostex()->result();
+		$this->template->write('title', 'Obat kedaluwarsa', TRUE);
+		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
+		$this->template->write_view('content', 'admin/table_exp', $data, true);
+
+		$this->template->render();
+
+	}
+
+	function table_stock() {
+		$data['table_stock'] = $this->apotek_data->outstock()->result();
+		$data['table_alstock'] = $this->apotek_data->almostout()->result();
+		$this->template->write('title', 'Obat Habis', TRUE);
+		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
+		$this->template->write_view('content', 'admin/table_stock', $data,  true);
+
+		$this->template->render();
+	}
 
 
-		$this->form_validation->set_rules('current_password', 'Current Password', 'required|trim');
-		$this->form_validation->set_rules('new_password1', 'New Password', 'required|trim|min_length[3]|matches[new_password2]');
-		$this->form_validation->set_rules('new_password2', 'Confirm New Password', 'required|trim|min_length[3]|matches[new_password1]');
+	function table_med() {
+		
+		$data['table_med'] = $this->apotek_data->medicine()->result();
+		$this->template->write('title', 'Lihat Obat', TRUE);
+		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
+		$this->template->write_view('content', 'admin/table_med', $data, true);
 
-		if ($this->form_validation->run() == false) {
+		$this->template->render();
+	}
 
-			$this->load->view('templates/header', $data);
-			$this->load->view('templates/sidebar', $data);
-			$this->load->view('templates/topbar', $data);
-			$this->load->view('user/changepassword', $data);
-			$this->load->view('templates/footer');
-		} else {
-			$current_password = $this->input->post(current_password);
-			$new_password = $this->input->post('new_password1');
-			if (!password_verify($current_password, $data['user']['password'])) {
-				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong Current Password!</div>');
-				redirect('user/changepassword');
-			} else {
-				if ($current_password == $new_password) {
-					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">New Password Cannot Be The Same As Current Password!</div>');
-					redirect('user/changepassword');
-				} else {
-					//Password Sudah Oke
-					$password_hash = password_hash($new_password, PASSWORD_DEFAULT);
 
-					$this->db->set('password', $password_hash);
-					$this->db->where('email', $this->session->userdata('email'));
-					$this->db->update('user');
-					$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password Change!</div>');
-					redirect('user/changepassword');
-				}
-			}
+	function invoice_report() {		
+		$this->template->write('title', 'Grafik Penjualan', TRUE);
+		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
+		$this->template->write_view('content', 'admin/invoice_report', true);
+
+		$this->template->render();
+		
+	}
+
+	function purchase_report() {
+
+		$this->template->write('title', 'Grafik Pembelian', TRUE);
+		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
+		$this->template->write_view('content', 'admin/purchase_report', true);
+
+		$this->template->render();
+		
+	}
+
+	function report() {
+		$data['totpur'] = $this->apotek_data->count_totpur();
+		$data['totinv'] = $this->apotek_data->count_totinv();
+		$data['report'] = $this->apotek_data->get_report();
+		$this->template->write('title', 'Laporan', TRUE);
+		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
+		$this->template->write_view('content', 'admin/report', $data, true);
+
+		$this->template->render();
+		
+	}
+
+	function table_cat() {
+		
+		$data['table_cat'] = $this->apotek_data->category()->result();
+		$this->template->write('title', 'Lihat Kategori', TRUE);
+		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
+		$this->template->write_view('content', 'admin/table_cat', $data, true);
+
+		$this->template->render();
+	}
+
+	function table_sup() {
+		$data['table_sup'] = $this->apotek_data->supplier()->result();
+		
+		$this->template->write('title', 'Lihat Pemasok', TRUE);
+		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
+		$this->template->write_view('content', 'admin/table_sup', $data, true);
+
+		$this->template->render();
+	}
+
+	function form_sup() {
+		$this->template->write('title', 'Tambah Pemasok', TRUE);
+		$this->template->write('header', 'Sistem Informasi Apotek Asilmi Asilmi Asilmi');
+		$this->template->write_view('content', 'admin/form_sup', '', true);
+
+		$this->template->render();
+	}
+
+	function form_invoice() {
+		$data['table_med'] = $this->apotek_data->medicine()->result();
+		$data['get_cat'] = $this->apotek_data->get_category();
+		$data['get_med'] = $this->apotek_data->get_medicine();
+		$data['get_unit'] = $this->apotek_data->get_unit();
+		$this->template->write('title', 'Tambah Penjualan', TRUE);
+		$this->template->write('header', 'Sistem Informasi Apotek Asilmi Asilmi Asilmi');
+		$this->template->write_view('content', 'admin/form_invoice', $data, true);
+
+		$this->template->render();
+	}
+
+
+
+	function table_invoice() {
+		$data['table_invoice'] = $this->apotek_data->invoice()->result();
+		$this->template->write('title', 'Lihat Penjualan', TRUE);
+		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
+		$this->template->write_view('content', 'admin/table_invoice', $data, true);
+
+		$this->template->render();
+	}
+
+
+	function add_invoice(){
+		 
+			$nama_pembeli = $this->input->post('nama_pembeli');
+			$tgl_beli = date("Y-m-d",strtotime($this->input->post('tgl_beli')));
+			$grandtotal = $this->input->post('grandtotal');
+			$ref = generateRandomString();
+			$nama_obat = $this->input->post('nama_obat');
+			$harga_jual = $this->input->post('harga_jual');
+			$banyak = $this->input->post('banyak');
+			$subtotal = $this->input->post('subtotal');
+
+		foreach($nama_obat as $key=>$val){
+		   
+		$data[] = array(
+				'nama_pembeli' => $nama_pembeli,
+				'tgl_beli' => $tgl_beli,
+				'grandtotal' => $grandtotal,
+				'ref' => $ref,
+				'nama_obat' => $val,
+				'harga_jual' => $harga_jual[$key],
+				'banyak' => $banyak[$key],
+				'subtotal' => $subtotal[$key],
+				
+				);
+
+		$this->db->set('stok', 'stok-'.$banyak[$key], FALSE);
+	    $this->db->where('nama_obat', $val);
+	    $updated = $this->db->update('table_med');
+		
 		}
+		
+		$this->db->insert_batch('table_invoice', $data);
+
+		$this->session->set_flashdata('inv_added', 'Penjualan berhasil ditambahkan');
+		redirect('example/table_invoice');
+	}
+
+
+
+	function invoice_page($ref) {
+		$where = array('ref' => $ref);
+		$data['table_invoice'] = $this->apotek_data->show_data($where, 'table_invoice')->result();
+		$data['show_invoice'] = $this->apotek_data->show_invoice($where, 'table_invoice')->result();
+		$this->template->write('title', 'Invoice Penjualan', TRUE);
+		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
+		$this->template->write_view('content', 'admin/invoice', $data, true);
+
+		$this->template->render();
+	}
+
+
+	function purchase_page($ref) {
+		$where = array('ref' => $ref);
+		$data['table_purchase'] = $this->apotek_data->show_data($where, 'table_purchase')->result();
+		$data['show_invoice'] = $this->apotek_data->show_invoice($where, 'table_purchase')->result();
+		$this->template->write('title', 'Invoice Pembelian', TRUE);
+		$this->template->write('header', 'Sistem Informasi Apotek Asilmi');
+		$this->template->write_view('content', 'admin/purchase', $data, true);
+
+		$this->template->render();
+	}
+
+
+
+	function remove_med($id_obat){
+		$where = array('id_obat' => $id_obat);
+		$this->apotek_data->delete_data($where,'table_med');
+		redirect('example/table_med');
+	}
+
+	function remove_cat($id_kat){
+		$where = array('id_kat' => $id_kat);
+		$this->apotek_data->delete_data($where,'table_cat');
+		redirect('example/table_cat');
+	}
+
+	function remove_sup($id_pem){
+		$where = array('id_pem' => $id_pem);
+		$this->apotek_data->delete_data($where,'table_sup');
+		redirect('example/table_sup');
+	}
+
+	function remove_unit($id_unit){
+		$where = array('id_unit' => $id_unit);
+		
+		$this->apotek_data->delete_data($where,'table_unit');
+		redirect('example/table_unit');
+	}
+
+
+	function remove_inv($ref){
+		$where = array('ref' => $ref);
+		$this->apotek_data->delete_data($where,'table_invoice');
+
+
+		redirect('example/table_invoice');
+	}
+
+	function remove_purchase($ref){
+		$where = array('ref' => $ref);
+		$this->apotek_data->delete_data($where,'table_purchase');
+		redirect('example/table_purchase');
+	}
+
+
+	 function product()
+	{
+	    $nama_obat=$this->input->post('nama_obat');
+        $data=$this->apotek_data->get_product($nama_obat);
+        echo json_encode($data);
+	}
+
+	 
+
+
+	function chart()
+	{
+       $data = $this->apotek_data->get_chart_cat();
+		echo json_encode($data);
+	}
+
+	function chart_unit()
+	{
+       $data = $this->apotek_data->get_chart_unit();
+		echo json_encode($data);
+	}
+
+
+	function chart_trans()
+	{
+		$tahun_beli=$this->input->post('tahun_beli');
+       	$data = $this->apotek_data->get_chart_trans($tahun_beli);
+		echo json_encode($data);
+	}
+
+	function chart_purchase()
+	{
+		$tahun_beli=$this->input->post('tahun_beli');
+       	$data = $this->apotek_data->get_chart_purchase($tahun_beli);
+		echo json_encode($data);
+	}
+
+	function gabung()
+	{
+       $tahun_beli=$this->input->post('tahun_beli');
+       	$data = $this->apotek_data->get_gabung($tahun_beli);
+		echo json_encode($data);
+	}
+
+	function topdemand()
+	{
+		$tahun_beli=$this->input->post('tahun_beli');
+       	$data = $this->apotek_data->topDemanded($tahun_beli);
+		echo json_encode($data);
+	}
+
+	function leastdemand()
+	{
+		$tahun_beli=$this->input->post('tahun_beli');
+       	$data = $this->apotek_data->leastDemanded($tahun_beli);
+		echo json_encode($data);
+	}
+
+	function highearn()
+	{
+		$tahun_beli=$this->input->post('tahun_beli');
+       	$data = $this->apotek_data->highestEarners($tahun_beli);
+		echo json_encode($data);
+	}
+
+	function lowearn()
+	{
+		$tahun_beli=$this->input->post('tahun_beli');
+       	$data = $this->apotek_data->lowestEarners($tahun_beli);
+		echo json_encode($data);
+	}
+
+	function toppurchase()
+	{
+		$tahun_beli=$this->input->post('tahun_beli');
+       	$data = $this->apotek_data->topPurchase($tahun_beli);
+		echo json_encode($data);
+	}
+
+	function leastpurchase()
+	{
+		$tahun_beli=$this->input->post('tahun_beli');
+       	$data = $this->apotek_data->leastPurchase($tahun_beli);
+		echo json_encode($data);
+	}
+
+	function highpurchase()
+	{
+		$tahun_beli=$this->input->post('tahun_beli');
+       	$data = $this->apotek_data->highestPurchase($tahun_beli);
+		echo json_encode($data);
+	}
+
+	function lowpurchase()
+	{
+		$tahun_beli=$this->input->post('tahun_beli');
+       	$data = $this->apotek_data->lowestPurchase($tahun_beli);
+		echo json_encode($data);
+	}
+
+
+
+	function totale()
+	{
+		$tahun_beli=$this->input->post('tahun_beli');
+       	$data = $this->apotek_data->get_tot($tahun_beli);
+		echo json_encode($data);
 	}
 }
