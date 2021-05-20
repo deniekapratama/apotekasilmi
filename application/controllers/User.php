@@ -231,47 +231,6 @@ class User extends CI_Controller
 
 
 
-	function remove_med($id_obat){
-		$where = array('id_obat' => $id_obat);
-		$this->apotek_data->delete_data($where,'table_med');
-		redirect('example/table_med');
-	}
-
-	function remove_cat($id_kat){
-		$where = array('id_kat' => $id_kat);
-		$this->apotek_data->delete_data($where,'table_cat');
-		redirect('example/table_cat');
-	}
-
-	function remove_sup($id_pem){
-		$where = array('id_pem' => $id_pem);
-		$this->apotek_data->delete_data($where,'table_sup');
-		redirect('example/table_sup');
-	}
-
-	function remove_unit($id_unit){
-		$where = array('id_unit' => $id_unit);
-		
-		$this->apotek_data->delete_data($where,'table_unit');
-		redirect('example/table_unit');
-	}
-
-
-	function remove_inv($ref){
-		$where = array('ref' => $ref);
-		$this->apotek_data->delete_data($where,'table_invoice');
-
-
-		redirect('example/table_invoice');
-	}
-
-	function remove_purchase($ref){
-		$where = array('ref' => $ref);
-		$this->apotek_data->delete_data($where,'table_purchase');
-		redirect('example/table_purchase');
-	}
-
-
 	 function product()
 	{
 	    $nama_obat=$this->input->post('nama_obat');
