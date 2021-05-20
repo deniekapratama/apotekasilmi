@@ -15,7 +15,7 @@
       <div class="x_content">
 
         <?php foreach($table_med as $m){ ?>
-        <form action="<?php echo base_url(). 'example/update_medicine'; ?>" method="post" class="form-horizontal form-label-left" novalidate>
+        <form action="<?php echo base_url(). 'admin/update_medicine'; ?>" method="post" class="form-horizontal form-label-left" novalidate>
 
 
           <div class="item form-group">
@@ -121,7 +121,7 @@
           <div class="ln_solid"></div>
           <div class="form-group">
             <div class="col-md-6 col-md-offset-3">
-              <a href="<?php echo base_url('example/table_med') ?>"><button type="button" class="btn btn-danger">Batal</button></a>
+              <a href="<?php echo base_url('admin/table_med') ?>"><button type="button" class="btn btn-danger">Batal</button></a>
               <button id="send" type="submit" class="btn btn-success">Simpan</button>
               
             </div>

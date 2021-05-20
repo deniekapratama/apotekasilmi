@@ -17,7 +17,7 @@
       <div class="x_content">
         
 
-       <form action="<?php echo base_url(). 'example/add_purchase'; ?>" method="post" class="form-horizontal form-label-left" novalidate>
+       <form action="<?php echo base_url(). 'admin/add_purchase'; ?>" method="post" class="form-horizontal form-label-left" novalidate>
 
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nama_pemasok">Nama Pemasok</label>
@@ -74,7 +74,7 @@
           <div class="ln_solid"></div>
           <div class="form-group">
             <div class="col-md-6 col-md-offset-3">
-              <a href="<?php echo base_url('example/table_invoice') ?>"><button type="button" class="btn btn-danger">Batal</button></a>
+              <a href="<?php echo base_url('admin/table_invoice') ?>"><button type="button" class="btn btn-danger">Batal</button></a>
               <button id='addpurchase' class="btn btn-info" type="button"><span class="fa fa-plus"></span> Tambah Produk</button>
               <button id="send" type="submit" class="btn btn-success">Simpan</button>
               

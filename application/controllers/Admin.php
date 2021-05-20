@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 require_once 'functions.php';
 /**
-* This is Example Controller
+* This is admin Controller
 */
 class Admin extends CI_Controller
 {
@@ -16,6 +16,7 @@ class Admin extends CI_Controller
 		$this->load->helper(array('form', 'url'));
 		
 		//tambahan		memanggil nama user
+
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
        
         $data['nullstock'] = $this->apotek_data->countstock();
@@ -283,7 +284,7 @@ class Admin extends CI_Controller
 		$this->apotek_data->insert_data($data,'table_med');
 
 		$this->session->set_flashdata('med_added', 'Obat berhasil ditambahkan');
-		redirect('example/table_med');
+		redirect('admin/table_med');
 
 	}
 
@@ -300,7 +301,7 @@ class Admin extends CI_Controller
 		$this->apotek_data->insert_data($data,'table_cat');
 
 		$this->session->set_flashdata('cat_added', 'Kategori berhasil ditambahkan');
-		redirect('example/table_cat');
+		redirect('admin/table_cat');
 	}
 
 	function add_unit(){
@@ -313,7 +314,7 @@ class Admin extends CI_Controller
 		$this->apotek_data->insert_data($data,'table_unit');
 
 		$this->session->set_flashdata('unit_added', 'Unit berhasil ditambahkan');
-		redirect('example/table_unit');
+		redirect('admin/table_unit');
 	}
 
 
@@ -330,7 +331,7 @@ class Admin extends CI_Controller
 		$this->apotek_data->insert_data($data,'table_sup');
 
 		$this->session->set_flashdata('sup_added', 'Pemasok berhasil ditambahkan');
-		redirect('example/table_sup');
+		redirect('admin/table_sup');
 	}
 
 	
@@ -370,7 +371,7 @@ class Admin extends CI_Controller
 		$this->db->insert_batch('table_invoice', $data);
 
 		$this->session->set_flashdata('inv_added', 'Penjualan berhasil ditambahkan');
-		redirect('example/table_invoice');
+		redirect('admin/table_invoice');
 	}
 
 	function add_purchase(){
@@ -406,7 +407,7 @@ class Admin extends CI_Controller
 		
 		$this->db->insert_batch('table_purchase', $data);
 		$this->session->set_flashdata('pur_added', 'Pembelian berhasil ditambahkan');
-		redirect('example/table_purchase');
+		redirect('admin/table_purchase');
 		
 	}
 
@@ -463,7 +464,7 @@ class Admin extends CI_Controller
 		$this->apotek_data->update_data($where,$data,'table_cat');
 
 		$this->session->set_flashdata('cat_added', 'Data kategori berhasil diperbarui');
-		redirect('example/table_cat');
+		redirect('admin/table_cat');
 	}
 
 	function edit_form_med($id_obat) {
@@ -511,7 +512,7 @@ class Admin extends CI_Controller
 
 		$this->apotek_data->update_data($where,$data,'table_med');
 		$this->session->set_flashdata('med_added', 'Data obat berhasil diperbarui');
-		redirect('example/table_med');
+		redirect('admin/table_med');
 	}
 
 
@@ -555,7 +556,7 @@ class Admin extends CI_Controller
 		$this->apotek_data->update_data($where,$data,'table_sup');
 
 		$this->session->set_flashdata('sup_added', 'Data pemasok berhasil diperbarui');
-		redirect('example/table_sup');
+		redirect('admin/table_sup');
 	}
 
 	function update_unit(){
@@ -574,33 +575,33 @@ class Admin extends CI_Controller
 		$this->apotek_data->update_data($where,$data,'table_unit');
 
 		$this->session->set_flashdata('unit_added', 'Data unit berhasil diperbarui');
-		redirect('example/table_unit');
+		redirect('admin/table_unit');
 	}
 
 
 	function remove_med($id_obat){
 		$where = array('id_obat' => $id_obat);
 		$this->apotek_data->delete_data($where,'table_med');
-		redirect('example/table_med');
+		redirect('admin/table_med');
 	}
 
 	function remove_cat($id_kat){
 		$where = array('id_kat' => $id_kat);
 		$this->apotek_data->delete_data($where,'table_cat');
-		redirect('example/table_cat');
+		redirect('admin/table_cat');
 	}
 
 	function remove_sup($id_pem){
 		$where = array('id_pem' => $id_pem);
 		$this->apotek_data->delete_data($where,'table_sup');
-		redirect('example/table_sup');
+		redirect('admin/table_sup');
 	}
 
 	function remove_unit($id_unit){
 		$where = array('id_unit' => $id_unit);
 		
 		$this->apotek_data->delete_data($where,'table_unit');
-		redirect('example/table_unit');
+		redirect('admin/table_unit');
 	}
 
 
@@ -609,13 +610,13 @@ class Admin extends CI_Controller
 		$this->apotek_data->delete_data($where,'table_invoice');
 
 
-		redirect('example/table_invoice');
+		redirect('admin/table_invoice');
 	}
 
 	function remove_purchase($ref){
 		$where = array('ref' => $ref);
 		$this->apotek_data->delete_data($where,'table_purchase');
-		redirect('example/table_purchase');
+		redirect('admin/table_purchase');
 	}
 
 
